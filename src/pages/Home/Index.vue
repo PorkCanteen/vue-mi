@@ -1,0 +1,304 @@
+<template>
+  <div class="index">
+    <div class="home-content">
+      <div class="container">
+        <!-- 轮播图部分 -->
+        <div class="home-swiper">
+          <!-- 品类列表 -->
+          <div class="categories">
+            <ul>
+              <li>
+                手机<em class="iconfont icon-jiantou"></em>
+                <div class="children">
+                  <div class="phone" v-for="item in phoneList" :key="item.id">
+                    <a href="">
+                      <img v-lazy="item.url" alt="" />
+                      <p>{{ item.title }}</p>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li>电视<em class="iconfont icon-jiantou"></em></li>
+              <li>笔记本 平板<em class="iconfont icon-jiantou"></em></li>
+              <li>家电<em class="iconfont icon-jiantou"></em></li>
+              <li>出行 穿戴<em class="iconfont icon-jiantou"></em></li>
+              <li>智能 路由器<em class="iconfont icon-jiantou"></em></li>
+              <li>电源 配件<em class="iconfont icon-jiantou"></em></li>
+              <li>健康 儿童<em class="iconfont icon-jiantou"></em></li>
+              <li>耳机 音箱<em class="iconfont icon-jiantou"></em></li>
+              <li>生活 箱包<em class="iconfont icon-jiantou"></em></li>
+            </ul>
+          </div>
+          <!-- 轮播图 -->
+          <swiper ref="mySwiper" :options="swiperOptions" :not-next-tick="notNextTick">
+            <swiper-slide
+              ><a href="javascript:;"><img src="../../../public/imgs/swiper/1.jpg" alt="" /></a
+            ></swiper-slide>
+            <swiper-slide
+              ><a href="javascript:;"><img src="../../../public/imgs/swiper/2.webp" alt="" /></a
+            ></swiper-slide>
+            <swiper-slide
+              ><a href="javascript:;"><img src="../../../public/imgs/swiper/3.webp" alt="" /></a
+            ></swiper-slide>
+            <swiper-slide
+              ><a href="javascript:;"><img src="../../../public/imgs/swiper/4.webp" alt="" /></a
+            ></swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
+            <div class="swiper-button-prev" slot="button-prev"></div>
+            <div class="swiper-button-next" slot="button-next"></div>
+          </swiper>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+// 引入 swiper 插件及其样式文件
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+export default {
+  name: 'Index',
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  data() {
+    return {
+      swiperOptions: {
+        effect: 'fade',
+        autoplay: true,
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      },
+      phoneList: [
+        {
+          id: 11,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a95d59ec8c9c6ae7061f314eb4901e7c.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 12,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a1241b5a94ba1739e85f72d46592af0e.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Xiaomi 11 Ultra',
+        },
+        {
+          id: 13,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/79e2935264bf9247aa7512e330112820.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 10 5G',
+        },
+        {
+          id: 14,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/947721c8bc4a4ecc3bca17237ee64dea.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Redmi Note 9 4G',
+        },
+        {
+          id: 15,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ca3caca774dc8be0a453c90d1fa58e13.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 5G',
+        },
+        {
+          id: 16,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6cf44dfe89111cb35e1a2211481ff546.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Xiaomi 11 Pro',
+        },
+        {
+          id: 17,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/56bb7e2d44cef71c3afedaeae3d98927.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 10 Pro',
+        },
+        {
+          id: 18,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/970c6b287eb89620f5ee8e2b347f6f3d.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Redmi Note 9 5G',
+        },
+        {
+          id: 19,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/92fdd051100722d25323e9bd188befc5.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 20,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a51c1afa4db8e47e62fad1f6fa4a8970.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 21,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1db88cd66ff1a6a3e75116988b7f3e12.jpg?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 22,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/76378ce289a36fcfa29f704ba90b4155.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 23,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f33903e1162959f500360a39896f2306.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 24,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c89e7b3a3495acaa0a4df271d9da59ea.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 25,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/72bd70039670d29610569421f753fcb6.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 26,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0cadc8b00dbe3b5615bd6ab657715baf.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 27,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fa2bae1f43611e80a8e4877719c76bdb.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 28,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ab956ee82c24bdd83d21bc212aad3eb5.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 29,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b45cbcf2bbe244982b2e865fa5077a52.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 30,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/77bfd346ad97807237beca297cfe2fba.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 31,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ab345272bf9894bb8269d4901344b068.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 32,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0e5aa3cab478f5eeba1c7d4cf25cba9a.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 33,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/958d5b4cf1f6a755b97b797f4cec67ed.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+        {
+          id: 34,
+          url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7b7e7228d1708665b7e6fe5e07ad4929.png?thumb=1&w=55&h=55&f=webp&q=90',
+          title: 'Note 11 Pro',
+        },
+      ],
+    }
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+@import '@/assets/styles/common.scss';
+.home-content {
+  height: 500px;
+  .container {
+    .home-swiper {
+      position: relative;
+      height: 460px;
+      .swiper-container {
+        height: 460px;
+        img {
+          height: 100%;
+        }
+        .swiper-button-prev,
+        .swiper-button-next {
+          color: $colorD;
+          padding: 7px;
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: $colorI;
+          }
+        }
+        .swiper-button-prev {
+          left: 239px;
+        }
+      }
+      .categories {
+        box-sizing: border-box;
+        z-index: 4;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 234px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 20px 0;
+        li {
+          box-sizing: border-box;
+          display: inline-block;
+          width: 100%;
+          height: 42px;
+          line-height: 42px;
+          padding: 0 30px;
+          font-size: $fontI;
+          color: $colorJ;
+          em {
+            display: block;
+            float: right;
+            font-weight: bold;
+          }
+          &:hover {
+            background-color: $colorL;
+            .children {
+              display: block;
+            }
+          }
+          .children {
+            display: none;
+            z-index: 10;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 234px;
+            height: 460px;
+            width: 992px;
+            padding-top: 10px;
+            background-color: $colorJ;
+            border: 1px solid $colorF;
+            box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.1);
+            .phone {
+              float: left;
+              box-sizing: border-box;
+              width: 24%;
+              height: 16.5%;
+              line-height: 42px;
+              padding: 10px;
+              img {
+                float: left;
+                height: 70%;
+              }
+              p {
+                float: left;
+                margin-left: 5px;
+                color: $colorA;
+                font-size: $fontJ;
+                &:hover {
+                  color: $colorL;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</style>

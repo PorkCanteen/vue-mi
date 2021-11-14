@@ -57,7 +57,7 @@
               <div class="children">
                 <ul v-for="item in phones" :key="item.id">
                   <li class="product">
-                    <a href="javascript:;" target="_blank">
+                    <a :href="'/product/' + item.id" target="_blank">
                       <div class="product-img">
                         <img :src="item.imgUrl" alt="" />
                       </div>
@@ -273,6 +273,8 @@ export default {
               .children {
                 height: 220px;
                 opacity: 1;
+                z-index: 20;
+                background-color: $colorJ;
               }
             }
             a {

@@ -1,13 +1,16 @@
 <template>
   <div class="home">
+    <!-- 头部组件 -->
     <common-header></common-header>
+    <!-- 主体部分 -->
     <router-view></router-view>
-    <div class="temp">占位</div>
+    <!-- 底部组件 -->
     <common-footer></common-footer>
   </div>
 </template>
 
 <script>
+// 引入 头部 底部 组件
 import CommonHeader from '@/components/common/CommonHeader.vue'
 import CommonFooter from '@/components/common/CommonFooter.vue'
 export default {
@@ -19,13 +22,4 @@ export default {
 }
 </script>
 
-<style>
-.temp {
-  height: 500px;
-  line-height: 500px;
-  background-color: skyblue;
-  text-align: center;
-  font-size: 80px;
-  color: #fff;
-}
-</style>
+<style lang="scss" scoped></style>
