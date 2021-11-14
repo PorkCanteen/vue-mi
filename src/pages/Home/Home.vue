@@ -2,6 +2,7 @@
   <div class="home">
     <common-header></common-header>
     <router-view></router-view>
+    <div class="temp">占位</div>
     <common-footer></common-footer>
   </div>
 </template>
@@ -18,4 +19,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.temp {
+  height: 500px;
+  line-height: 500px;
+  background-color: skyblue;
+  text-align: center;
+  font-size: 80px;
+  color: #fff;
+}
+</style>
