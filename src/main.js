@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 // 通用样式文件
 import '@/assets/styles/basic.scss'
-import '@/assets/styles/common.scss'
 import '@/assets/styles/reset.scss'
 
 Vue.config.productionTip = false
