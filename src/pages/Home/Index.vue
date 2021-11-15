@@ -30,7 +30,7 @@
             </ul>
           </div>
           <!-- 轮播图 -->
-          <swiper ref="mySwiper" :options="swiperOptions" :not-next-tick="notNextTick">
+          <swiper ref="mySwiper" :options="swiperOptions">
             <swiper-slide
               ><a href="javascript:;"><img src="../../../public/imgs/swiper/1.jpg" alt="" /></a
             ></swiper-slide>
