@@ -48,6 +48,62 @@
             <div class="swiper-button-next" slot="button-next"></div>
           </swiper>
         </div>
+        <!-- 中部图标部分 -->
+        <div class="home-middle">
+          <div class="left-box">
+            <ul>
+              <li>
+                <a href="javascript:;"
+                  ><em class="iconfont icon-shizhong"></em><br />
+                  保障服务</a
+                >
+              </li>
+              <li>
+                <a href="javascript:;"
+                  ><em class="iconfont icon-24gl-building2"></em><br />
+                  企业团购</a
+                >
+              </li>
+              <li>
+                <a href="javascript:;"
+                  ><em class="iconfont icon-orbit"></em><br />
+                  F码通道</a
+                >
+              </li>
+              <li>
+                <a href="javascript:;"
+                  ><em class="iconfont icon-line-simcardsimka-02"></em><br />
+                  米粉卡</a
+                >
+              </li>
+              <li>
+                <a href="javascript:;"
+                  ><em class="iconfont icon-qian"></em><br />
+                  以旧换新</a
+                >
+              </li>
+              <li>
+                <a href="javascript:;"
+                  ><em class="iconfont icon-shumashouji"></em><br />
+                  话费充值</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="right-box">
+            <ul>
+              <li class="rise">
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8a6d6d37904e22c72130e3e4ec79b41.jpg?w=632&h=340" alt="" /></a>
+              </li>
+              <li class="rise">
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fce474f4024b96545959ccd45b7e50f3.jpg?w=632&h=340" alt="" /></a>
+              </li>
+              <li class="rise">
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/35b3f906861db9d6472206e6d68318d9.jpeg?w=632&h=340" alt="" /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -208,7 +264,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/common.scss';
 .home-content {
-  height: 500px;
   .container {
     .home-swiper {
       position: relative;
@@ -278,12 +333,12 @@ export default {
               float: left;
               box-sizing: border-box;
               width: 24%;
-              height: 16.5%;
+              height: 75px;
               line-height: 42px;
               padding: 10px;
               img {
                 float: left;
-                height: 70%;
+                height: 43px;
               }
               p {
                 float: left;
@@ -294,6 +349,51 @@ export default {
                   color: $colorL;
                 }
               }
+            }
+          }
+        }
+      }
+    }
+    .home-middle {
+      height: 170px;
+      margin: 20px 0;
+      .left-box {
+        float: left;
+        height: 170px;
+        width: 234px;
+        background-color: #5f5750;
+        text-align: center;
+        li {
+          display: inline-block;
+          box-sizing: border-box;
+          width: 33.3%;
+          height: 85px;
+          padding-top: 20px;
+          border: 1px solid $colorB;
+          a {
+            color: $colorD;
+            font-size: $fontJ;
+            .iconfont {
+              font-size: $fontF;
+              line-height: 25px;
+            }
+            &:hover {
+              color: $colorJ;
+            }
+          }
+        }
+      }
+      .right-box {
+        float: right;
+        height: 170px;
+        li {
+          float: left;
+          height: 170px;
+          margin-left: 14px;
+          transition: all 0.3s;
+          a {
+            img {
+              height: 100%;
             }
           }
         }

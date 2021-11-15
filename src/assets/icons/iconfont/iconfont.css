@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 2925926 */
-  src: url('//at.alicdn.com/t/font_2925926_77aqgusa15u.woff2?t=1636874996722') format('woff2'), url('//at.alicdn.com/t/font_2925926_77aqgusa15u.woff?t=1636874996722') format('woff'), url('//at.alicdn.com/t/font_2925926_77aqgusa15u.ttf?t=1636874996722') format('truetype');
+  src: url('//at.alicdn.com/t/font_2925926_8qjzyz1nl7k.woff2?t=1636943595213') format('woff2'), url('//at.alicdn.com/t/font_2925926_8qjzyz1nl7k.woff?t=1636943595213') format('woff'), url('//at.alicdn.com/t/font_2925926_8qjzyz1nl7k.ttf?t=1636943595213') format('truetype');
 }
 
 .iconfont {
@@ -9,6 +9,30 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shumashouji:before {
+  content: '\e603';
+}
+
+.icon-shizhong:before {
+  content: '\e74f';
+}
+
+.icon-qian:before {
+  content: '\e663';
+}
+
+.icon-24gl-building2:before {
+  content: '\e831';
+}
+
+.icon-orbit:before {
+  content: '\ea06';
+}
+
+.icon-line-simcardsimka-02:before {
+  content: '\e720';
 }
 
 .icon-jiantou:before {
