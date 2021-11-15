@@ -105,6 +105,41 @@
           </div>
         </div>
       </div>
+      <!-- 主要内容部分 -->
+      <div class="home-main">
+        <div class="container">
+          <div class="main-top">
+            <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f334fbd05d5681bb838fefd1c815d88c.jpg?thumb=1&w=1686&h=165&f=webp&q=90" alt="" /></a>
+          </div>
+          <div class="main-content">
+            <div class="content-series">
+              <div class="head">
+                <div class="title fl">手机</div>
+                <div class="button fr">
+                  <a href="">查看更多<em class="iconfont icon-jiantou"></em></a>
+                </div>
+              </div>
+              <div class="body">
+                <div class="large fl rise">
+                  <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c583f2edc613f1be20fa415910b13ce3.jpg?thumb=1&w=322&h=844&f=webp&q=90" alt="" /></a>
+                </div>
+                <ul>
+                  <li class="fl rise" v-for="item in mainPhone" :key="item.id">
+                    <a href="">
+                      <div class="pic"><img :src="item.mainImage" alt="" /></div>
+                      <h5>{{ item.name }}</h5>
+                      <h6>{{ item.subtitle }}</h6>
+                      <p>
+                        {{ item.price }}元起 <a href=""><em class="iconfont icon-gouwuchekong"></em></a>
+                      </p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -256,7 +291,22 @@ export default {
           title: 'Note 11 Pro',
         },
       ],
+      mainPhone: [],
     }
+  },
+  methods: {
+    async getMainPhone() {
+      const res = await this.$axios.get('/products', {
+        params: {
+          categoryId: 100012,
+          pageSize: 14,
+        },
+      })
+      this.mainPhone = res.list.slice(6, 14)
+    },
+  },
+  mounted() {
+    this.getMainPhone()
   },
 }
 </script>
@@ -390,10 +440,108 @@ export default {
           float: left;
           height: 170px;
           margin-left: 14px;
-          transition: all 0.3s;
           a {
             img {
               height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .home-main {
+    background-color: $colorH;
+    .container {
+      padding: 20px 0;
+      .main-top {
+        width: 1226px;
+        height: 120px;
+        img {
+          width: 100%;
+        }
+      }
+      .main-content {
+        margin-top: 20px;
+        .content-series {
+          // margin-bottom: 20px;
+          .head {
+            height: 58px;
+            line-height: 58px;
+            width: 100%;
+            .title {
+              font-size: $fontF;
+              color: $colorB;
+            }
+            .button {
+              font-size: $fontI;
+              a {
+                color: $colorA;
+                transition: all 0.3s;
+                em {
+                  color: $colorB;
+                  font-weight: bold;
+                }
+                &:hover {
+                  color: $colorL;
+                }
+              }
+            }
+          }
+          .body {
+            height: 614px;
+            .large {
+              height: 100%;
+              img {
+                height: 100%;
+              }
+            }
+            ul {
+              li {
+                display: inline-block;
+                box-sizing: border-box;
+                height: 300px;
+                width: 234px;
+                background-color: $colorJ;
+                margin-left: 14px;
+                text-align: center;
+                padding-top: 20px;
+                &:nth-child(n + 5) {
+                  margin-top: 14px;
+                }
+                a {
+                  display: inline-block;
+                  height: 100%;
+                  width: 100%;
+                  .pic {
+                    height: 128px;
+                    img {
+                      height: 128px;
+                      margin-top: 15px;
+                    }
+                  }
+                  h5 {
+                    margin-top: 30px;
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: $colorA;
+                  }
+                  h6 {
+                    font-size: 12px;
+                    font-weight: normal;
+                    color: $colorE;
+                    margin: 5px 0;
+                  }
+                  p {
+                    font-size: 14px;
+                    color: $colorL;
+                    margin-top: 10px;
+                    a {
+                      display: inline;
+                      color: $colorL;
+                    }
+                  }
+                }
+              }
             }
           }
         }
