@@ -20,6 +20,6 @@ module.exports = {
         functions: 'never',
       },
     ],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': 'off',
   },
 }

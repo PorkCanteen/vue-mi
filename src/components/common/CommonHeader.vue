@@ -59,9 +59,9 @@
                   <li class="product">
                     <a :href="'/product/' + item.id" target="_blank">
                       <div class="product-img">
-                        <img :src="item.imgUrl" alt="" />
+                        <img :src="item.mainImage" alt="" />
                       </div>
-                      <div class="product-title">{{ item.title }}</div>
+                      <div class="product-title">{{ item.name }}</div>
                       <div class="product-price">{{ item.price }}元起</div>
                     </a>
                   </li>
@@ -97,47 +97,23 @@ export default {
   name: 'common-header',
   data() {
     return {
-      phones: [
-        {
-          id: 1,
-          imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8cad77bda138fd94eadbc2ddfced7c56.png?thumb=1&w=220&h=151&f=webp&q=90',
-          title: 'Xiaomi Civi',
-          price: '2599',
-        },
-        {
-          id: 2,
-          imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/087c52d253d9301dff7743d6bf2d0330.png?thumb=1&w=220&h=151&f=webp&q=90',
-          title: 'Xiaomi MIX 4',
-          price: '4199',
-        },
-        {
-          id: 3,
-          imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/85e44ea2405ff8414148bbde7446b137.png?thumb=1&w=220&h=151&f=webp&q=90',
-          title: 'Xiaomi MIX FOLD',
-          price: '7499',
-        },
-        {
-          id: 4,
-          imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a359e9346e3c6ee8c9d8389e3fd9458.png?thumb=1&w=220&h=151&f=webp&q=90',
-          title: 'Xiaomi 11 Ultra',
-          price: '5499',
-        },
-        {
-          id: 5,
-          imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a1c45eadcedeb27b1cafca0359422da9.png?thumb=1&w=220&h=151&f=webp&q=90',
-          title: 'Xiaomi 11 Pro',
-          price: '3999',
-        },
-        {
-          id: 6,
-          imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/56e3379b5422cb06e5c8a0c546445606.png?thumb=1&w=220&h=151&f=webp&q=90',
-          title: 'Xiaomi 11 青春版',
-          price: '1999',
-        },
-      ],
+      phones: [],
     }
   },
-  methods: {},
+  methods: {
+    async getProductList() {
+      const res = await this.$axios.get('/products', {
+        params: {
+          categoryId: '100012',
+          pageSize: 6,
+        },
+      })
+      this.phones = res.list
+    },
+  },
+  mounted() {
+    this.getProductList()
+  },
 }
 </script>
 
