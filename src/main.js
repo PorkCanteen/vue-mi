@@ -29,10 +29,10 @@ axios.interceptors.response.use(function (response) {
   }
 })
 
-Vue.config.productionTip = false
 Vue.use(VueLazyload, {
-  loading: '/public/imgs/loading-svg/loading-bars.svg',
+  loading: '/imgs/loading-svg/loading-bars.svg',
 })
+Vue.config.productionTip = false
 
 new Vue({
   router,

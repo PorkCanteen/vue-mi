@@ -93,13 +93,13 @@
           <div class="right-box">
             <ul>
               <li class="rise">
-                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8a6d6d37904e22c72130e3e4ec79b41.jpg?w=632&h=340" alt="" /></a>
+                <a href="javascript:;"><img v-lazy="'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8a6d6d37904e22c72130e3e4ec79b41.jpg?w=632&h=340'" alt="" /></a>
               </li>
               <li class="rise">
-                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fce474f4024b96545959ccd45b7e50f3.jpg?w=632&h=340" alt="" /></a>
+                <a href="javascript:;"><img v-lazy="'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fce474f4024b96545959ccd45b7e50f3.jpg?w=632&h=340'" alt="" /></a>
               </li>
               <li class="rise">
-                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/35b3f906861db9d6472206e6d68318d9.jpeg?w=632&h=340" alt="" /></a>
+                <a href="javascript:;"><img v-lazy="'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/35b3f906861db9d6472206e6d68318d9.jpeg?w=632&h=340'" alt="" /></a>
               </li>
             </ul>
           </div>
@@ -125,12 +125,12 @@
                 </div>
                 <ul>
                   <li class="fl rise" v-for="item in mainPhone" :key="item.id">
-                    <a href="">
-                      <div class="pic"><img :src="item.mainImage" alt="" /></div>
+                    <a href="javascript:;">
+                      <div class="pic"><img v-lazy="item.mainImage" alt="" /></div>
                       <h5>{{ item.name }}</h5>
                       <h6>{{ item.subtitle }}</h6>
                       <p>
-                        {{ item.price }}元起 <a href=""><em class="iconfont icon-gouwuchekong"></em></a>
+                        {{ item.price }}元起 <a href="javascript:;"><em class="iconfont icon-gouwuchekong" @click="addCart()"></em></a>
                       </p>
                     </a>
                   </li>
@@ -141,10 +141,17 @@
         </div>
       </div>
     </div>
+    <popup :title="'提示'" :submitBtn="'查看详情'" :btn="1" :size="'middle'" :showModule="showModule" @submit="toCart" @cancel="showModule = false">
+      <template v-slot:body>
+        <p>商品已添加到购物车！</p>
+      </template>
+    </popup>
   </div>
 </template>
 
 <script>
+// 引入自定义弹窗插件
+import Popup from '@/components/module/popup.vue'
 // 引入 swiper 插件及其样式文件
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
@@ -153,6 +160,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    Popup,
   },
   data() {
     return {
@@ -292,6 +300,7 @@ export default {
         },
       ],
       mainPhone: [],
+      showModule: false,
     }
   },
   methods: {
@@ -303,6 +312,21 @@ export default {
         },
       })
       this.mainPhone = res.list.slice(6, 14)
+    },
+    addCart() {
+      this.showModule = true
+      // this.$axios
+      //   .post('/carts', {
+      //     productId: id,
+      //     selected: true,
+      //   })
+      //   .then(() => {})
+      //   .catch(() => {
+      //     this.showModule = true
+      //   })
+    },
+    toCart() {
+      this.$router.push('/cart')
     },
   },
   mounted() {

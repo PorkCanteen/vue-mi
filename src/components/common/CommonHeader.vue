@@ -59,7 +59,7 @@
                   <li class="product">
                     <a :href="'/product/' + item.id" target="_blank">
                       <div class="product-img">
-                        <img :src="item.mainImage" alt="" />
+                        <img v-lazy="item.mainImage" alt="" />
                       </div>
                       <div class="product-title">{{ item.name }}</div>
                       <div class="product-price">{{ item.price }}元起</div>
