@@ -1,0 +1,9 @@
+@mixin btn-hover($time: 0.3s, $color: #ff6600, $bgColor: none, $size: 1, $opacity: 1) {
+  transition: all $time;
+  &:hover {
+    background-color: $bgColor;
+    color: $color;
+    transform: scale($size);
+    opacity: $opacity;
+  }
+}

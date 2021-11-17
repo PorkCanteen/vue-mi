@@ -33,7 +33,7 @@
         </ul>
         <!-- 右侧用户操作区域 -->
         <div class="top-client fr">
-          <div class="client-list fl"><a href="javascript:;">登录</a><span>|</span><a href="javascript:;">注册</a><span>|</span><a href="javascript:;">消息通知</a></div>
+          <div class="client-list fl"><a href="/#/login">登录</a><span>|</span><a href="javascript:;">注册</a><span>|</span><a href="javascript:;">消息通知</a></div>
           <div class="client-cart fr">
             <span class="iconfont icon-gouwuchekong"></span>
             <span>购物车 (0)</span>
