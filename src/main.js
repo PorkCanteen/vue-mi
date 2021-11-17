@@ -25,11 +25,14 @@ axios.defaults.timeout = 8000
 axios.interceptors.response.use(function (response) {
   // 获取真实返回值
   const res = response.data
+  const path = location.hash
   if (res.status === 0) {
     return res.data
   } else if (res.status === 10) {
-    // 若未登录，跳转到登录页
-    window.location.href = '/#/login'
+    if (path !== '#/index') {
+      // 若未登录，跳转到登录页
+      window.location.href = '/#/login'
+    }
   } else {
     Message.warning(res.msg)
     return Promise.reject(res)

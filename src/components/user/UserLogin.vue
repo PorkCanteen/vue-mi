@@ -11,8 +11,8 @@
           <input type="text" class="psw" placeholder="密码" v-model="password" />
           <input type="submit" class="submit" value="登录" @click="login" />
         </form>
-        <a href="javascript:;" class="forget fl" @click="pleaseWait">忘记密码</a>
-        <a href="javascript:;" class="phone fr" @click="pleaseWait">手机号登录</a>
+        <a href="javascript:;" class="forget fl" @click="$message.info('敬请期待')">忘记密码</a>
+        <a href="javascript:;" class="phone fr" @click="$message.info('敬请期待')">手机号登录</a>
       </div>
     </div>
   </div>
@@ -35,9 +35,9 @@ export default {
         username,
         password,
       })
-      this.$router.push('/')
       this.$cookie.set('userId', res.id, { expires: '1M' })
-      // todo 保存用户信息
+      this.$store.dispatch('saveUserName', res.username)
+      this.$router.push('/index')
     },
     async register() {
       const res = await this.$axios.post('/user/register', {
@@ -51,9 +51,6 @@ export default {
     },
     toRegister() {
       this.$emit('change', 'UserRegister')
-    },
-    pleaseWait() {
-      this.$message.info('敬请期待')
     },
   },
 }

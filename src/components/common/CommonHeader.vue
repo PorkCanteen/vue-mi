@@ -33,11 +33,15 @@
         </ul>
         <!-- 右侧用户操作区域 -->
         <div class="top-client fr">
-          <div class="client-list fl"><a href="/#/login">登录</a><span>|</span><a href="javascript:;">注册</a><span>|</span><a href="javascript:;">消息通知</a></div>
           <div class="client-cart fr">
             <span class="iconfont icon-gouwuchekong"></span>
-            <span>购物车 (0)</span>
+            <span>购物车 ({{ cartCount }})</span>
             <div class="show-cart">购物车中还没有商品，抓紧选购吧</div>
+          </div>
+          <div class="client-list fr">
+            <a href="javascript:;" v-if="username">{{ username }}</a>
+            <a href="javascript:;" v-if="username">我的订单</a>
+            <a href="/#/login" v-if="!username">登录</a>
           </div>
         </div>
       </div>
@@ -111,6 +115,14 @@ export default {
       this.phones = res.list
     },
   },
+  computed: {
+    username() {
+      return this.$store.state.username
+    },
+    cartCount() {
+      return this.$store.state.cartCount
+    },
+  },
   mounted() {
     this.getProductList()
   },
@@ -144,13 +156,14 @@ export default {
       }
     }
     .top-client {
-      width: 260px;
+      width: 300px;
       .client-list {
         a {
           display: inline-block;
           line-height: 40px;
           color: $colorE;
           font-size: $fontK;
+          margin-right: 15px;
           &:hover {
             color: $colorJ;
           }

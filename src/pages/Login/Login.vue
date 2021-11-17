@@ -6,7 +6,7 @@
     <div class="login-content">
       <div class="content-header">
         <div class="header-title fl">
-          <div class="logo fl">
+          <div class="logo fl" @click="$router.push('/')">
             <img src="https://s02.mifile.cn/assets/static/image/logo-mi2.png" alt="" />
           </div>
           <div class="text fl">
@@ -77,6 +77,7 @@ export default {
           height: 40px;
           width: 40px;
           margin-right: 10px;
+          cursor: pointer;
           img {
             height: 100%;
           }
