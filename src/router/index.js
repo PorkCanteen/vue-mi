@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home/Home.vue'
 import Index from '../pages/Home/Index.vue'
 import Login from '../pages/Login/Login.vue'
+import Product from '../pages/Product/Product.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,11 @@ const routes = [
         path: '/index',
         name: 'index',
         component: Index,
+      },
+      {
+        path: '/product/:id',
+        name: 'Product',
+        component: Product,
       },
     ],
   },

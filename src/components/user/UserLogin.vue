@@ -9,7 +9,7 @@
         <form action="">
           <input type="text" class="id" placeholder="邮箱/手机号码/小米ID" v-model="username" />
           <input type="text" class="psw" placeholder="密码" v-model="password" />
-          <input type="submit" class="submit" value="登录" @click="login" />
+          <input type="submit" class="submit" value="登录" @click.prevent="login" />
         </form>
         <a href="javascript:;" class="forget fl" @click="$message.info('敬请期待')">忘记密码</a>
         <a href="javascript:;" class="phone fr" @click="$message.info('敬请期待')">手机号登录</a>
@@ -35,20 +35,27 @@ export default {
         username,
         password,
       })
-      this.$cookie.set('userId', res.id, { expires: '1M' })
+      this.$cookie.set('userId', res.id, { expires: 'Session' })
       this.$store.dispatch('saveUserName', res.username)
-      this.$router.push('/index')
-    },
-    async register() {
-      const res = await this.$axios.post('/user/register', {
-        username: 'admin123121',
-        password: 'admin1',
-        email: 'admin1@222.com',
+      // 跳转并传递参数，使得 header 组件知道是从 login 组件跳转而去从而触发调用接口
+      // query 传参使用 path； params 传参使用 name
+      this.$router.push({
+        name: 'index',
+        params: {
+          from: 'login',
+        },
       })
-      this.$message.success('登录成功')
-      // this.$router.push('/')
-      console.log(res)
     },
+    // async register() {
+    //   const res = await this.$axios.post('/user/register', {
+    //     username: 'admin123121',
+    //     password: 'admin1',
+    //     email: 'admin1@222.com',
+    //   })
+    //   this.$message.success('登录成功')
+    //   // this.$router.push('/')
+    //   console.log(res)
+    // },
     toRegister() {
       this.$emit('change', 'UserRegister')
     },

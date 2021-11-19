@@ -35,13 +35,13 @@
         <div class="top-client fr">
           <div class="client-cart fr">
             <span class="iconfont icon-gouwuchekong"></span>
-            <span>购物车 ({{ cartCount }})</span>
+            <span>购物车 ({{ cartCount || 0 }})</span>
             <div class="show-cart">购物车中还没有商品，抓紧选购吧</div>
           </div>
           <div class="client-list fr">
             <a href="javascript:;" v-if="username">{{ username }}</a>
-            <a href="javascript:;" v-if="username">我的订单</a>
-            <a href="/#/login" v-if="!username">登录</a>
+            <a href="javascript:;" v-if="username" @click="logout">退出</a>
+            <a href="javascript:;" v-if="!username" @click="$router.push('/login')">登录</a>
           </div>
         </div>
       </div>
@@ -114,6 +114,18 @@ export default {
       })
       this.phones = res.list
     },
+    logout() {
+      this.$axios.post('/user/logout').then(() => {
+        this.$message.success('退出成功')
+        this.$cookie.set('userId', '', { expires: '-1' })
+        this.$store.dispatch('saveUserName', '')
+        this.$store.dispatch('saveCartCount', '0')
+      })
+    },
+    async getCartCount() {
+      const res = await this.$axios.get('/carts/products/sum')
+      this.$store.dispatch('saveCartCount', res)
+    },
   },
   computed: {
     username() {
@@ -125,6 +137,11 @@ export default {
   },
   mounted() {
     this.getProductList()
+    // 仅当从登录页跳转时调用接口
+    const params = this.$route.params
+    if (params && params.from === 'login') {
+      this.getCartCount()
+    }
   },
 }
 </script>

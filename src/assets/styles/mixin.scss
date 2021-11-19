@@ -1,3 +1,4 @@
+// 鼠标经过按钮动画
 @mixin btn-hover($time: 0.3s, $color: #ff6600, $bgColor: none, $size: 1, $opacity: 1) {
   transition: all $time;
   &:hover {
@@ -5,5 +6,20 @@
     color: $color;
     transform: scale($size);
     opacity: $opacity;
+  }
+}
+
+// 图片淡入动画 (需搭配 v-show 逻辑，控制隐藏显示)
+@mixin fade-in($startX, $startY, $toX, $toY, $t: 1.5s) {
+  &.fade-enter {
+    opacity: 0;
+    transform: translate($startX, $startY);
+  }
+  &.fade-enter-active {
+    transition: all $t;
+  }
+  &.fade-enter-to {
+    opacity: 1;
+    transform: translate($toX, $toY);
   }
 }

@@ -12,7 +12,7 @@ import '@/assets/styles/reset.scss'
 
 // 按需引入并挂载 element-ui
 import { Message } from 'element-ui'
-Vue.use(Message)
+// Vue.use(Message)
 Vue.prototype.$message = Message
 
 // ★ axios 配置
@@ -32,6 +32,7 @@ axios.interceptors.response.use(function (response) {
     if (path !== '#/index') {
       // 若未登录，跳转到登录页
       window.location.href = '/#/login'
+      return Promise.reject(res)
     }
   } else {
     Message.warning(res.msg)
