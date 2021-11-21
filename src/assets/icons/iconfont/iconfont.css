@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 2925926 */
-  src: url('//at.alicdn.com/t/font_2925926_xlcgehvm1ge.woff2?t=1637045685633') format('woff2'), url('//at.alicdn.com/t/font_2925926_xlcgehvm1ge.woff?t=1637045685633') format('woff'), url('//at.alicdn.com/t/font_2925926_xlcgehvm1ge.ttf?t=1637045685633') format('truetype');
+  src: url('//at.alicdn.com/t/font_2925926_4j955bwmbl.woff2?t=1637323911682') format('woff2'), url('//at.alicdn.com/t/font_2925926_4j955bwmbl.woff?t=1637323911682') format('woff'), url('//at.alicdn.com/t/font_2925926_4j955bwmbl.ttf?t=1637323911682') format('truetype');
 }
 
 .iconfont {
@@ -9,6 +9,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-aixin:before {
+  content: '\eca1';
 }
 
 .icon-cuocha_kuai:before {

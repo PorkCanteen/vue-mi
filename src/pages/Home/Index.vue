@@ -130,7 +130,7 @@
                       <h5>{{ item.name }}</h5>
                       <h6>{{ item.subtitle }}</h6>
                       <p>
-                        {{ item.price }}元起 <a href="javascript:;"><em class="iconfont icon-gouwuchekong" @click="addCart()"></em></a>
+                        {{ item.price }}元起 <a href="javascript:;"><em class="iconfont icon-gouwuchekong" @click="addCart(item.id)"></em></a>
                       </p>
                     </a>
                   </li>
@@ -313,17 +313,19 @@ export default {
       })
       this.mainPhone = res.list.slice(6, 14)
     },
-    addCart() {
-      this.showModule = true
-      // this.$axios
-      //   .post('/carts', {
-      //     productId: id,
-      //     selected: true,
-      //   })
-      //   .then(() => {})
-      //   .catch(() => {
-      //     this.showModule = true
-      //   })
+    addCart(id) {
+      this.$axios
+        .post('/carts', {
+          productId: id,
+          selected: true,
+        })
+        .then((res) => {
+          this.showModule = true
+          this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
+        })
+        .catch(() => {
+          this.showModule = true
+        })
     },
     toCart() {
       this.$router.push('/cart')
