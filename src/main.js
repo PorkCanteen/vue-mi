@@ -11,8 +11,9 @@ import '@/assets/styles/basic.scss'
 import '@/assets/styles/reset.scss'
 
 // 按需引入并挂载 element-ui
-import { Message } from 'element-ui'
+import { Message, Checkbox } from 'element-ui'
 // Vue.use(Message)
+Vue.use(Checkbox)
 Vue.prototype.$message = Message
 
 // ★ axios 配置

@@ -35,8 +35,21 @@
         <div class="top-client fr">
           <div class="client-cart fr">
             <span class="iconfont icon-gouwuchekong"></span>
-            <span>购物车 ({{ cartCount || 0 }})</span>
-            <div class="show-cart">购物车中还没有商品，抓紧选购吧</div>
+            <span @click="$router.push('/cart')">购物车 ({{ cartCount || 0 }})</span>
+            <div class="show-cart-empty" v-if="!list.length">购物车中还没有商品，抓紧选购吧</div>
+            <div class="show-cart" v-if="list.length">
+              <div class="list">
+                <div class="item" v-for="(item, index) in list" :key="index">
+                  <img v-lazy="item.productMainImage" alt="" />
+                  <div class="title fl">{{ item.productName }}</div>
+                  <div class="price fr">{{ item.productPrice }}元 × {{ item.quantity }}</div>
+                </div>
+              </div>
+              <div class="total">
+                <div class="total-quantity fl">共 {{ totalQuantity }} 件商品</div>
+                <div class="button fr" @click="$router.push('/cart')">去购物车结算</div>
+              </div>
+            </div>
           </div>
           <div class="client-list fr">
             <a href="javascript:;" v-if="username">{{ username }}</a>
@@ -102,6 +115,8 @@ export default {
   data() {
     return {
       phones: [],
+      list: [],
+      totalQuantity: 0,
     }
   },
   methods: {
@@ -126,6 +141,12 @@ export default {
       const res = await this.$axios.get('/carts/products/sum')
       this.$store.dispatch('saveCartCount', res)
     },
+    // 获取购物车列表
+    async getCartList() {
+      const res = await this.$axios.get('/carts')
+      this.list = res.cartProductVoList || []
+      this.totalQuantity = res.cartTotalQuantity
+    },
   },
   computed: {
     username() {
@@ -135,8 +156,14 @@ export default {
       return this.$store.state.cartCount
     },
   },
+  watch: {
+    cartCount() {
+      this.getCartList()
+    },
+  },
   mounted() {
     this.getProductList()
+    this.getCartList()
     // 仅当从登录页跳转时调用接口
     const params = this.$route.params
     if (params && params.from === 'login') {
@@ -205,8 +232,8 @@ export default {
           span {
             color: $colorL;
           }
+          .show-cart-empty,
           .show-cart {
-            height: 100px;
             opacity: 1;
           }
         }
@@ -220,13 +247,13 @@ export default {
           margin-right: 5px;
           font-size: $fontJ;
         }
-        .show-cart {
+        .show-cart-empty {
           z-index: 5;
           position: absolute;
           right: 0;
           top: 40px;
           width: 330px;
-          height: 0px;
+          height: 100px;
           opacity: 0;
           line-height: 100px;
           text-align: center;
@@ -234,6 +261,46 @@ export default {
           box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
           background-color: $colorJ;
           transition: all 0.3s;
+        }
+        .show-cart {
+          box-sizing: border-box;
+          z-index: 5;
+          position: absolute;
+          right: 0;
+          top: 40px;
+          width: 330px;
+          opacity: 0;
+          line-height: 50px;
+          text-align: center;
+          font-size: $fontJ;
+          box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+          background-color: $colorJ;
+          transition: all 0.3s;
+          padding: 10px 20px;
+          .list .item {
+            height: 50px;
+            width: 100%;
+            img {
+              float: left;
+              height: 50px;
+              margin-right: 10px;
+            }
+          }
+          .total {
+            height: 50px;
+            .total-quantity {
+              font-size: $fontJ;
+              color: $colorC;
+            }
+            .button {
+              width: 100px;
+              height: 40px;
+              line-height: 40px;
+              background-color: $colorL;
+              color: $colorJ;
+              padding: 2px 10px;
+            }
+          }
         }
       }
     }
