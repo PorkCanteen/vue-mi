@@ -8,7 +8,7 @@
       <div class="form">
         <form action="">
           <input type="text" class="id" placeholder="邮箱/手机号码/小米ID" v-model="username" />
-          <input type="text" class="psw" placeholder="密码" v-model="password" />
+          <input type="password" class="psw" placeholder="密码" v-model="password" />
           <input type="submit" class="submit" value="登录" @click.prevent="login" />
         </form>
         <a href="javascript:;" class="forget fl" @click="$message.info('敬请期待')">忘记密码</a>

@@ -6,6 +6,10 @@ import Login from '../pages/Login/Login.vue'
 import Product from '../pages/Product/Product.vue'
 import Detail from '../pages/Detail/detail.vue'
 import Cart from '../pages/Cart/Cart.vue'
+import Order from '../pages/Order/Order.vue'
+import OrderConfirm from '../pages/Order/OrderConfirm.vue'
+import OrderPay from '../pages/Order/OrderPay.vue'
+import OrderList from '../pages/Order/OrderList.vue'
 
 Vue.use(VueRouter)
 
@@ -42,6 +46,28 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: Cart,
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: Order,
+    children: [
+      {
+        path: 'confirm',
+        name: 'order-confirm',
+        component: OrderConfirm,
+      },
+      {
+        path: 'pay',
+        name: 'order-pay',
+        component: OrderPay,
+      },
+      {
+        path: 'list',
+        name: 'order-list',
+        component: OrderList,
+      },
+    ],
   },
 ]
 

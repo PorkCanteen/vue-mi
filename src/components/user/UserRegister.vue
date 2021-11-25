@@ -8,7 +8,7 @@
       <div class="form">
         <form action="">
           <input type="text" class="id" placeholder="请输入用户名" v-model="username" />
-          <input type="text" class="psw" placeholder="请输入密码" v-model="password" />
+          <input type="password" class="psw" placeholder="请输入密码" v-model="password" />
           <input type="text" class="email" placeholder="请输入邮箱" v-model="email" />
           <input type="submit" class="submit" value="点击注册" @click="register" />
         </form>
