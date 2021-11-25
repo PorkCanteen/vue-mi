@@ -10,6 +10,7 @@ import Order from '../pages/Order/Order.vue'
 import OrderConfirm from '../pages/Order/OrderConfirm.vue'
 import OrderPay from '../pages/Order/OrderPay.vue'
 import OrderList from '../pages/Order/OrderList.vue'
+import Alipay from '../pages/Order/Alipay.vue'
 
 Vue.use(VueRouter)
 
@@ -66,6 +67,11 @@ const routes = [
         path: 'list',
         name: 'order-list',
         component: OrderList,
+      },
+      {
+        path: 'alipay',
+        name: 'alipay',
+        component: Alipay,
       },
     ],
   },
