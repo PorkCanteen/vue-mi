@@ -1,5 +1,10 @@
 <template>
   <div class="order-pay">
+    <order-header title="订单支付">
+      <template v-slot:tip>
+        <span>温馨提示：请谨防钓鱼链接及诈骗电话</span>
+      </template>
+    </order-header>
     <div class="container">
       <div class="pay-msg">
         <div class="gou iconfont icon-gougou"></div>
@@ -40,8 +45,12 @@
 </template>
 
 <script>
+import OrderHeader from '@/components/order/OrderHeader.vue'
 export default {
   name: 'order-pay',
+  components: {
+    OrderHeader
+  },
   data() {
     return {
       orderNo: this.$route.query.orderNo,
@@ -66,6 +75,9 @@ export default {
       if (payType === 2) {
         this.$message.warning('敬请期待')
         // window.open('/#/order/alipay?orderId=' + this.orderNo, '_blank')
+        setTimeout(() => {
+          this.$router.push('/order/list')
+        }, 1000)
       }
     }
   },
@@ -76,13 +88,13 @@ export default {
 @import '@/assets/styles/common.scss';
 .order-pay {
   background-color: $colorH;
-  padding: 20px 0 50px;
+  padding: 0 0 50px;
   .container {
     .pay-msg {
       position: relative;
       box-sizing: border-box;
       background-color: $colorJ;
-
+      margin-top: 20px;
       height: 230px;
       padding: 62px 53px;
       .gou {

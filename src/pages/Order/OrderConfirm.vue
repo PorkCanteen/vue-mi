@@ -1,5 +1,10 @@
 <template>
   <div class="order-confirm">
+    <order-header title="订单确认">
+      <template v-slot:tip>
+        <span>温馨提示：请核对收货信息</span>
+      </template>
+    </order-header>
     <div class="container">
       <div class="confirm-box">
         <div class="location">
@@ -100,11 +105,13 @@
 </template>
 
 <script>
+import OrderHeader from '@/components/order/OrderHeader.vue'
 import Popup from '@/components/module/popup.vue'
 export default {
   name: 'order-confirm',
   components: {
     Popup,
+    OrderHeader,
   },
   data() {
     return {
@@ -241,10 +248,11 @@ export default {
 .order-confirm {
   // height: 500px;
   background-color: $colorH;
-  padding: 20px 0 50px;
+  padding: 0 0 50px;
   .confirm-box {
     background-color: $colorJ;
     padding: 30px 60px;
+    margin-top: 20px;
     .location {
       &:after {
         content: '';

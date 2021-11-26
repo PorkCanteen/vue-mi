@@ -32,6 +32,7 @@ export default {
 @import '@/assets/styles/common.scss';
 .order-header {
   height: 112px;
+  background-color: $colorJ;
   .container {
     position: relative;
     .left-box {
