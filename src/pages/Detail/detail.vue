@@ -1,5 +1,5 @@
 <template>
-  <div class="detail">
+  <div class="detail" ref="mainDiv">
     <div class="container">
       <div class="detail-img fl">
         <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1632713426.30988142.jpg" alt="" />
@@ -66,9 +66,19 @@ export default {
       this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
       this.$router.push('/cart')
     },
+    getDivHeight() {
+      const screenheight = window.innerHeight
+      if (this.$refs.mainDiv.style.height + 704 > screenheight) return
+      this.$refs.mainDiv.style.height = screenheight - 704 + 'px'
+    },
   },
   mounted() {
     this.getProductInfo()
+    this.getDivHeight()
+    window.addEventListener('resize', this.getDivHeight)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.getDivHeight, false)
   },
 }
 </script>

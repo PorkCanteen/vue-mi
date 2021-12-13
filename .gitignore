@@ -2,6 +2,7 @@
 node_modules
 /dist
 /static/mock
+/show
 
 
 # local env files
