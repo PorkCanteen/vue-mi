@@ -1,5 +1,5 @@
 <template>
-  <div class="order-pay">
+  <div class="order-pay" ref="mainDiv">
     <order-header title="订单支付">
       <template v-slot:tip>
         <span>温馨提示：请谨防钓鱼链接及诈骗电话</span>
@@ -60,9 +60,6 @@ export default {
       payType: ''
     }
   },
-  mounted() {
-    this.getOrderInfo()
-  },
   methods: {
     getOrderInfo() {
       this.$axios.get(`/orders/${this.orderNo}`).then((res) => {
@@ -79,7 +76,19 @@ export default {
           this.$router.push('/order/list')
         }, 1000)
       }
-    }
+    },
+    getDivHeight() {
+      const screenheight = window.innerHeight
+      this.$refs.mainDiv.style.height = screenheight - 704 + 'px'
+    },
+  },
+  mounted() {
+    this.getOrderInfo()
+    this.getDivHeight()
+    window.addEventListener('resize', this.getDivHeight)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.getDivHeight, false)
   },
 }
 </script>
@@ -89,6 +98,8 @@ export default {
 .order-pay {
   background-color: $colorH;
   padding: 0 0 50px;
+  height: 0;
+  min-height: 702px;
   .container {
     .pay-msg {
       position: relative;

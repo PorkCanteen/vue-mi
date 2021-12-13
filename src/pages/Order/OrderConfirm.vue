@@ -1,5 +1,5 @@
 <template>
-  <div class="order-confirm">
+  <div class="order-confirm" ref="mainDiv">
     <order-header title="订单确认">
       <template v-slot:tip>
         <span>温馨提示：请核对收货信息</span>
@@ -12,7 +12,7 @@
           <div class="location-box" :class="{ checked: index === checkIndex }" @click="checkIndex = index" v-for="(item, index) in AddressList" :key="index">
             <h6>{{ item.receiverName }}</h6>
             <p>{{ item.receiverMobile }}</p>
-            <p>{{ item.receiverCity }} {{ item.receiverDistrict }} {{ item.receiverAddress }}</p>
+            <p>{{ item.receiverProvince }} {{ item.receiverCity }} {{ item.receiverDistrict }} {{ item.receiverAddress }}</p>
             <div class="delete iconfont icon-lajitong" @click="delAddress(item)"></div>
             <div class="edit iconfont icon-bi" @click="editAddressModule(item)"></div>
           </div>
@@ -69,29 +69,8 @@
             <input type="text" placeholder="姓名" v-model="checkedItem.receiverName" />
             <input type="text" placeholder="手机号" v-model="checkedItem.receiverMobile" />
           </div>
-          <div>
-            <select name="province" v-model="checkedItem.receiverProvince">
-              <option value="北京">北京</option>
-              <option value="上海">上海</option>
-              <option value="重庆">重庆</option>
-              <option value="深圳">深圳</option>
-              <option value="四川">四川</option>
-            </select>
-            <select name="city" v-model="checkedItem.receiverCity">
-              <option value="成都">成都</option>
-              <option value="绵阳">绵阳</option>
-              <option value="泸州">泸州</option>
-              <option value="雅安">雅安</option>
-              <option value="宜宾">宜宾</option>
-            </select>
-            <select name="district" v-model="checkedItem.receiverDistrict">
-              <option value="武侯区">武侯区</option>
-              <option value="成华区">成华区</option>
-              <option value="金牛区">金牛区</option>
-              <option value="锦江区">锦江区</option>
-              <option value="青羊区">青羊区</option>
-            </select>
-          </div>
+          <!-- 城市选择组件 -->
+          <city-select @updateData="updateData"></city-select>
           <div>
             <textarea name="street" v-model="checkedItem.receiverAddress"></textarea>
           </div>
@@ -105,6 +84,7 @@
 </template>
 
 <script>
+import CitySelect from '@/components/module/CitySelect.vue'
 import OrderHeader from '@/components/order/OrderHeader.vue'
 import Popup from '@/components/module/popup.vue'
 export default {
@@ -112,6 +92,7 @@ export default {
   components: {
     Popup,
     OrderHeader,
+    CitySelect,
   },
   data() {
     return {
@@ -235,10 +216,24 @@ export default {
           })
         })
     },
+    getDivHeight() {
+      const screenheight = window.innerHeight
+      this.$refs.mainDiv.style.height = screenheight - 704 + 'px'
+    },
+    updateData(province, city, district) {
+      this.checkedItem.receiverProvince = province
+      this.checkedItem.receiverCity = city
+      this.checkedItem.receiverDistrict = district
+    },
   },
   mounted() {
     this.getAddressList()
     this.getCartList()
+    this.getDivHeight()
+    window.addEventListener('resize', this.getDivHeight)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.getDivHeight, false)
   },
 }
 </script>
@@ -246,7 +241,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/common.scss';
 .order-confirm {
-  // height: 500px;
+  height: 971px;
+  min-height: 971px;
   background-color: $colorH;
   padding: 0 0 50px;
   .confirm-box {
@@ -419,6 +415,13 @@ export default {
   .edit-wrap {
     box-sizing: border-box;
     font-size: $fontJ;
+    .city-select /deep/ select {
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid $colorG;
+      padding: 0 10px;
+      margin-right: 15px;
+    }
     div {
       margin-bottom: 15px;
       input {
@@ -430,13 +433,6 @@ export default {
         padding-left: 15px;
         border: 1px solid $colorG;
         margin-right: 14px;
-      }
-      select {
-        height: 40px;
-        line-height: 40px;
-        border: 1px solid $colorG;
-        padding: 0 10px;
-        margin-right: 15px;
       }
       textarea {
         box-sizing: border-box;

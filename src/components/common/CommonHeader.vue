@@ -75,7 +75,7 @@
               <div class="children">
                 <ul v-for="item in phones" :key="item.id">
                   <li class="product">
-                    <a :href="'/product/' + item.id" target="_blank">
+                    <a :href="'#/product/' + item.id" target="_blank">
                       <div class="product-img">
                         <img v-lazy="item.mainImage" alt="" />
                       </div>

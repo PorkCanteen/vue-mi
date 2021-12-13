@@ -11,6 +11,7 @@ import OrderConfirm from '../pages/Order/OrderConfirm.vue'
 import OrderPay from '../pages/Order/OrderPay.vue'
 import OrderList from '../pages/Order/OrderList.vue'
 import Alipay from '../pages/Order/Alipay.vue'
+import CitySelect from '../components/module/CitySelect.vue'
 
 Vue.use(VueRouter)
 
@@ -74,6 +75,11 @@ const routes = [
         component: Alipay,
       },
     ],
+  },
+  {
+    path: '/city',
+    name: 'city-select',
+    component: CitySelect,
   },
 ]
 

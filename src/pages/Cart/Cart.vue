@@ -5,7 +5,7 @@
         <span> 温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</span>
       </template>
     </order-header>
-    <div class="product-list">
+    <div class="product-list" ref="mainDiv">
       <div class="container">
         <table class="table">
           <thead>
@@ -164,9 +164,18 @@ export default {
         this.$router.push('/order/confirm')
       }
     },
+    getDivHeight() {
+      const screenheight = window.innerHeight
+      this.$refs.mainDiv.style.height = screenheight - 704 + 'px'
+    },
   },
   mounted() {
     this.getCartList()
+    this.getDivHeight()
+    window.addEventListener('resize', this.getDivHeight)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.getDivHeight, false)
   },
 }
 </script>
@@ -192,6 +201,8 @@ export default {
 .product-list {
   background-color: $colorH;
   padding: 30px 0 60px;
+  height: 0;
+  min-height: 370px;
   .table {
     width: 100%;
     background-color: $colorJ;
