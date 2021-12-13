@@ -125,7 +125,7 @@
                 </div>
                 <ul>
                   <li class="fl rise" v-for="item in mainPhone" :key="item.id">
-                    <a :href="'/#/product/' + item.id">
+                    <a :href="'/#/product/' + item.id" target="_blank">
                       <div class="pic"><img v-lazy="item.mainImage" alt="" /></div>
                       <h5>{{ item.name }}</h5>
                       <h6>{{ item.subtitle }}</h6>
