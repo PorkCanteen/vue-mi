@@ -218,6 +218,7 @@ export default {
     },
     getDivHeight() {
       const screenheight = window.innerHeight
+      if (this.$refs.mainDiv.style.height + 704 > screenheight) return
       this.$refs.mainDiv.style.height = screenheight - 704 + 'px'
     },
     updateData(province, city, district) {
@@ -241,7 +242,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/common.scss';
 .order-confirm {
-  min-height: 971px;
+  // height: 971px;
+  min-height: 1171px;
   background-color: $colorH;
   padding: 0 0 50px;
   .confirm-box {
