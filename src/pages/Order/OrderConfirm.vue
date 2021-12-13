@@ -241,7 +241,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/common.scss';
 .order-confirm {
-  height: 971px;
   min-height: 971px;
   background-color: $colorH;
   padding: 0 0 50px;
