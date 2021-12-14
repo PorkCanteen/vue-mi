@@ -418,6 +418,7 @@ export default {
     font-size: $fontJ;
     .city-select /deep/ select {
       height: 40px;
+      width: 175px;
       line-height: 40px;
       border: 1px solid $colorG;
       padding: 0 10px;
@@ -438,7 +439,7 @@ export default {
       textarea {
         box-sizing: border-box;
         height: 62px;
-        width: 100%;
+        width: 96%;
         padding: 13px 15px;
         border: 1px solid $colorG;
       }

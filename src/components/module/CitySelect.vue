@@ -74,7 +74,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+// 默认样式
+.city-select {
+  select {
+    height: 40px;
+    width: 175px;
+    line-height: 40px;
+    border: 1px solid #e5e5e5;
+    padding: 0 10px;
+    margin-right: 15px;
+  }
+}
 /* 注意：
 引用该组件并设置样式时需添加 /deep/ 进行样式穿透。例如：
 .city-select /deep/ select {

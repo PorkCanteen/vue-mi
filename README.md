@@ -12,7 +12,11 @@
 
 购买功能实现
 
-![网站页面展示](./show/purchase.gif)
+![添加购物车](./show/addCart.gif)
+
+![查看购物车](./show/toCart.gif)
+
+![添加地址](./show/addAddress.gif)
 
 #### 项目特点
 
