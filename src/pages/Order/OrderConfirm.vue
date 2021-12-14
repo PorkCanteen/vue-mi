@@ -416,14 +416,14 @@ export default {
   .edit-wrap {
     box-sizing: border-box;
     font-size: $fontJ;
-    .city-select /deep/ select {
-      height: 40px;
-      width: 175px;
-      line-height: 40px;
-      border: 1px solid $colorG;
-      padding: 0 10px;
-      margin-right: 15px;
-    }
+    // .city-select /deep/ select {
+    //   height: 40px;
+    //   width: 175px;
+    //   line-height: 40px;
+    //   border: 1px solid $colorG;
+    //   padding: 0 10px;
+    //   margin-right: 15px;
+    // }
     div {
       margin-bottom: 15px;
       input {
