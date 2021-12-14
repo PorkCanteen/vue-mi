@@ -1,24 +1,35 @@
-# vue-mi
+### vue-mi (Vue 仿电商平台项目)
 
-## Project setup
-```
-npm install
-```
+#### 项目介绍
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+本项目是一个基于 vue+webpack 构建的单页面应用，项目使用 Sass 预处理器还原页面样式并实现基本动画，运用 vuex、vue-router 以及 ES6 语法。项目充分运用组件化思想进行搭建，对重复使用及工作中泛用性高的组件进行单独封装，从而提升复用性，同时简化代码。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### 项目效果展示
 
-### Lints and fixes files
-```
-npm run lint
-```
+网站页面展示
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![网站页面展示](./show/pages.png)
+
+购买功能实现
+
+![网站页面展示](./show/purchase.gif)
+
+#### 项目特点
+
+1. 充分运用组件化思想，单独封装功能组件及可复用组件
+
+- 将页面中重复部分进行单独封装(例如头部、底部组件)提高代码可复用性。
+- 创建城市联动下拉选择组件
+  项目中需要对下拉选择框实现 省市区 三级联动效果，提升用户体验。
+  方案：单独封装 city-select 组件，通过层层筛选刷新的方法实现联动选择。
+- 创建弹窗组件
+  包括添加购物车、更改收货地址等，项目中有多处需要弹窗功能。
+  方案：单独封装 popup 组件，定义不同尺寸、不同按钮方案的弹窗，并通过 Vue 插槽 实现自定义弹窗内容。
+
+2. 充分运用 Sass 预处理器的特性，提取相同样式并统一定义，精简项目代码，提升项目的可维护性。
+
+3. 性能优化
+
+- 运用图片懒加载技术，防止图片加载时引起的页面样式错误，提升用户体验
+- 通过提取公共代码进行组件封装，减少代码量，提升加载速度并减少内存消耗
+- 路由按需加载，组件库按需导入，提升加载速度
