@@ -62,7 +62,7 @@
         <p>是否确认要删除此地址</p>
       </template>
     </popup>
-    <popup title="新增地址" :btn="1" :showModule="showEditModule" @cancel="showEditModule = false" @submit="submitAddress">
+    <popup title="新增地址" :btn="1" :showModule="showEditModule" @cancel="showEditModule = false" @submit="submitAddress" themeColor="#ff6600">
       <template v-slot:body>
         <div class="edit-wrap">
           <div>

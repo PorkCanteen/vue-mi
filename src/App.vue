@@ -32,5 +32,5 @@ export default {
 @import './assets/styles/common.scss';
 @import './assets/styles/basic.scss';
 @import './assets/styles/button.scss';
-@import './assets/styles/popup.scss';
+// @import './assets/styles/popup.scss';
 </style>

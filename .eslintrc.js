@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['plugin:vue/essential', '@vue/standard'],
+  extends: ['plugin:vue/essential', '@vue/standard', './packages/index.js', './packages/style/city-select.css'],
   parserOptions: {
     parser: 'babel-eslint',
   },

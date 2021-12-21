@@ -1,17 +1,19 @@
 {
   "name": "vue-mi",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "city-select": "vue-cli-service build --target lib ./src/city-select/index.js --dest city-select --name city-select"
+    "city-select": "vue-cli-service build --target lib ./src/city-select/index.js --dest city-select --name city-select",
+    "popup": "vue-cli-service build --target lib ./src/popup/index.js --dest popup --name popup"
   },
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
+    "m-popup-dialog": "^1.0.0",
     "swiper": "^5.3.6",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",

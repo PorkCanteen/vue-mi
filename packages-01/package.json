@@ -1,12 +1,12 @@
 {
-  "name": "m-popup-dialog",
-  "version": "1.0.1",
-  "description": "add README",
+  "name": "m-city-select",
+  "version": "1.0.4",
+  "description": "add demo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["css", "javascript", "vue"],
+  "keywords": ["vue", "js", "css", "form"],
   "author": "porkcanteen",
   "license": "ISC"
 }

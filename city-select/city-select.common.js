@@ -1806,13 +1806,11 @@ var component = normalizeComponent(
 
  // Vue 插件模式需暴露 install 方法
 
-var city_select_install = function install(Vue) {
-  Vue.component(CitySelect.name, {
-    CitySelect: CitySelect
-  });
+CitySelect.install = function (Vue) {
+  Vue.component(CitySelect.name, CitySelect);
 };
 
-/* harmony default export */ var city_select = (city_select_install);
+/* harmony default export */ var city_select = (CitySelect);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
 
