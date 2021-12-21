@@ -1,10 +1,10 @@
 <template>
   <transition name="slide">
-    <div class="popup" v-show="showModule">
+    <div class="popup" :class="transition" v-show="showModule">
       <!-- 遮罩层 -->
-      <div class="mask"></div>
+      <div class="mask" v-if="mask"></div>
       <!-- 弹框 -->
-      <div class="p-dialog">
+      <div class="p-dialog" :style="{ '--theme-color': themeColor }">
         <div class="p-header">
           <h4>{{ title }}</h4>
           <a href="javascript:;" class="iconfont icon-cuocha_kuai" @click="$emit('cancel')"></a>
@@ -29,23 +29,44 @@
 export default {
   name: 'popup',
   props: {
-    // 1. 定义弹框大小：包括 小 small 中 middle 大 large 表单 form
+    // 1. 弹框大小：包括 小 small 中 middle 大 large 表单 form
     size: {
       type: String,
       default: 'form',
     },
-    // 2. 定义弹框标题
-    title: String,
-    // 3. 定义按钮类型： 1 确定 2 取消 3 确定&取消
-    btn: Number,
-    // 4. 定义按钮内容
+    // 2. 弹框标题
+    title: {
+      type: String,
+      default: 'warning',
+    },
+    // 3. 按钮类型： 1 确定 2 取消 3 确定&取消
+    btn: {
+      type: Number,
+      default: 3,
+    },
+    // 4. 按钮内容
     submitBtn: {
       type: String,
-      default: '确定',
+      default: 'submit',
     },
     cancelBtn: {
       type: String,
-      default: '取消',
+      default: 'cancel',
+    },
+    // 5. 是否显示遮罩层
+    mask: {
+      type: Boolean,
+      default: true,
+    },
+    // 6. 选择弹框显示/隐藏的动画效果：top 从上方渐入渐出 fade 淡入淡出
+    transition: {
+      type: String,
+      default: 'top',
+    },
+    // 7. 设置主题色
+    themeColor: {
+      type: String,
+      default: '#ff6600',
     },
     showModule: Boolean,
   },
